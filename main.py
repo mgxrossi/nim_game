@@ -26,6 +26,10 @@ while matches > 0:
 
     take = int(input("Combien d'allumettes voulez-vous prendre (1 à 4) ? "))
 
+    while take < 1 or take > 4 or take > matches:
+        print("Choix invalide.")
+        take = int(input("Choisissez un nombre entre 1 et 4, sans dépasser les allumettes restantes : "))
+
     matches = matches - take
 
     if current_player == player1:
