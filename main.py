@@ -19,3 +19,16 @@ else:
 
 print(current_player, "commence la partie.")
 print("Il y a", matches, "allumettes.")
+
+while matches > 0:
+    print("Il reste", matches, "allumettes.")
+    print(current_player, "doit jouer.")
+
+    take = int(input("Combien d'allumettes voulez-vous prendre (1 à 4) ? "))
+
+    matches = matches - take
+
+    if current_player == player1:
+        current_player = player2
+    else:
+        current_player = player1
