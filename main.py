@@ -12,6 +12,10 @@ print("2 -", player2)
 
 choice = input("Votre choix : ")
 
+while choice != "1" and choice != "2":
+    print("Choix invalide.")
+    choice = input("Votre choix : ")
+
 if choice == "1":
     current_player = player1
 else:
@@ -21,14 +25,25 @@ print(current_player, "commence la partie.")
 print("Il y a", matches, "allumettes.")
 
 while matches > 0:
-    print("Il reste", matches, "allumettes.")
+    if matches == 1:
+        print("Il reste 1 allumette.")
+    else:
+        print("Il reste", matches, "allumettes.")
+
     print(current_player, "doit jouer.")
 
-    take = int(input("Combien d'allumettes voulez-vous prendre (1 à 4) ? "))
+#empêcher une erreur si le joueur tape du texte
+    while True:
+        try:
+            take = int(input("Combien d'allumettes voulez-vous prendre (1 à 4) ? "))
 
-    while take < 1 or take > 4 or take > matches:
-        print("Choix invalide.")
-        take = int(input("Choisissez un nombre entre 1 et 4, sans dépasser les allumettes restantes : "))
+            if 1 <= take <= 4 and take <= matches:
+                break
+
+            print("Choix invalide.")
+
+        except ValueError:
+            print("Veuillez entrer un nombre.")
 
     matches = matches - take
 
@@ -41,6 +56,9 @@ while matches > 0:
             print(player2, "gagne !")
         else:
             print(player1, "gagne !")
+
+            print("La partie est terminée.")
+            print("Merci d'avoir joué !")
 
         break
 
