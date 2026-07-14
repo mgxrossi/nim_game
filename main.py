@@ -32,6 +32,18 @@ while matches > 0:
 
     matches = matches - take
 
+    if matches == 0:
+        print(current_player, "a pris la dernière allumette.")
+        print(current_player, "a perdu !")
+
+#Comme il y a un break juste avant, ce changement ne sera pas exécuté quand la partie est terminée, donc y aura plus de changemlent de joueur
+        if current_player == player1:
+            print(player2, "gagne !")
+        else:
+            print(player1, "gagne !")
+
+        break
+
     if current_player == player1:
         current_player = player2
     else:
